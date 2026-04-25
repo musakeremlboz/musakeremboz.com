@@ -280,10 +280,10 @@
       MKB
     </a>
     <ul class="flex items-center gap-6 sm:gap-8 font-mono text-[11px] tracking-[0.18em] uppercase">
-      <li><a href="#hakkinda" class="ulink text-ink-dim dark:text-sand-dim hover:text-ink dark:hover:text-sand-ink transition-colors">Hakkında</a></li>
-      <li><a href="#deneyim"  class="ulink text-ink-dim dark:text-sand-dim hover:text-ink dark:hover:text-sand-ink transition-colors">Deneyim</a></li>
-      <li class="hidden sm:list-item"><a href="#dusunceler" class="ulink text-ink-dim dark:text-sand-dim hover:text-ink dark:hover:text-sand-ink transition-colors">Düşünceler</a></li>
-      <li><a href="#iletisim" class="ulink text-ink-dim dark:text-sand-dim hover:text-ink dark:hover:text-sand-ink transition-colors">İletişim</a></li>
+      <li><a href="#hakkinda" class="ulink text-ink-dim dark:text-sand-dim hover:text-ink dark:hover:text-sand-ink transition-colors" data-i18n="nav-about">Hakkında</a></li>
+      <li><a href="#deneyim"  class="ulink text-ink-dim dark:text-sand-dim hover:text-ink dark:hover:text-sand-ink transition-colors" data-i18n="nav-exp">Deneyim</a></li>
+      <li class="hidden sm:list-item"><a href="#dusunceler" class="ulink text-ink-dim dark:text-sand-dim hover:text-ink dark:hover:text-sand-ink transition-colors" data-i18n="nav-thoughts">Düşünceler</a></li>
+      <li><a href="#iletisim" class="ulink text-ink-dim dark:text-sand-dim hover:text-ink dark:hover:text-sand-ink transition-colors" data-i18n="nav-contact">İletişim</a></li>
     </ul>
   </nav>
 </header>
@@ -296,22 +296,22 @@
     <div class="reveal flex items-start justify-between gap-6 mb-16 sm:mb-24">
       <div class="font-mono text-[11px] tracking-[0.18em] uppercase text-ink-faint dark:text-sand-faint leading-relaxed">
         <div>Musa Kerem Boz</div>
-        <div>Sistem Seyyahı</div>
+        <div data-i18n="hero-subtitle">Sistem Seyyahı</div>
         <div class="mt-1">Yalova, TR · 40°39′N 29°16′E</div>
       </div>
       <div class="font-mono text-[11px] tracking-[0.18em] uppercase text-ink-faint dark:text-sand-faint text-right leading-relaxed">
         <div>v.2025.04</div>
-        <div>tr / <a href="#" class="ulink hover:text-ink dark:hover:text-sand-ink">en</a></div>
+        <div><span id="lang-cur">tr</span> / <button id="lang-btn" class="ulink hover:text-ink dark:hover:text-sand-ink bg-transparent border-0 p-0 font-mono text-[11px] tracking-[0.18em] uppercase cursor-pointer text-ink-faint dark:text-sand-faint">en</button></div>
       </div>
     </div>
 
     <!-- Headline -->
     <h1 class="reveal display text-[clamp(2.6rem,8.5vw,7rem)] max-w-[14ch]">
       Musa Kerem Boz —<br />
-      <span class="display-italic text-rust dark:text-sand">Sistem Seyyahı.</span>
+      <span class="display-italic text-rust dark:text-sand" data-i18n="hero-h1-italic">Sistem Seyyahı.</span>
     </h1>
 
-    <p class="reveal mt-10 max-w-[42ch] text-lg sm:text-xl leading-relaxed text-ink-dim dark:text-sand-dim text-balance">
+    <p class="reveal mt-10 max-w-[42ch] text-lg sm:text-xl leading-relaxed text-ink-dim dark:text-sand-dim text-balance" data-i18n="hero-tagline">
       Yalova'da yaşıyor, her şeyin birbiriyle nasıl bağlandığını anlamaya çalışıyor.
     </p>
 
@@ -322,14 +322,14 @@
           <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-rust dark:bg-sand opacity-60"></span>
           <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-rust dark:bg-sand"></span>
         </span>
-        <span class="uppercase tracking-[0.18em] text-ink-faint dark:text-sand-faint">şu an →</span>
+        <span class="uppercase tracking-[0.18em] text-ink-faint dark:text-sand-faint" data-i18n="hero-now">şu an →</span>
       </span>
-      <span class="text-ink dark:text-sand-ink">Gençlik ve Spor Bakanlığı, Destek Personeli</span>
+      <span class="text-ink dark:text-sand-ink" data-i18n="hero-status">Gençlik ve Spor Bakanlığı, Destek Personeli</span>
     </div>
 
     <!-- Scroll cue -->
     <a href="#hakkinda" class="reveal absolute bottom-10 right-6 sm:right-10 lg:right-16 font-mono text-[11px] tracking-[0.18em] uppercase text-ink-faint dark:text-sand-faint hover:text-ink dark:hover:text-sand-ink transition-colors group">
-      <span class="block">aşağı</span>
+      <span class="block" data-i18n="hero-scroll">aşağı</span>
       <span class="block mt-1 transition-transform duration-300 group-hover:translate-y-1">↓</span>
     </a>
   </section>
@@ -348,7 +348,7 @@
         <div class="reveal sticky top-24 font-mono text-[11px] tracking-[0.22em] uppercase text-ink-faint dark:text-sand-faint">
           <div class="flex items-baseline gap-3">
             <span class="tabular">01</span>
-            <span>Hakkında</span>
+            <span data-i18n="nav-about">Hakkında</span>
           </div>
         </div>
       </div>
@@ -356,13 +356,13 @@
       <!-- Body -->
       <div class="col-span-12 md:col-span-6">
         <div class="reveal max-w-[60ch] space-y-7 text-[17px] sm:text-[18px] leading-[1.7] text-ink dark:text-sand-ink">
-          <p>
+          <p data-i18n="about-p1">
             Tek bir alana yerleşmek yerine birçok alanın kesişim noktalarında durmayı tercih ediyorum. Buna <em class="display-italic text-rust dark:text-sand not-italic">generalist</em> deniyor; zaman zaman eleştiri gibi söyleniyor, ama ben bunu bir kısıtlama değil, bir hareket serbestisi olarak okuyorum. Her katmanı görmek, sistemleri bütün olarak anlamak — bu benim için bilinçli bir tercih değil, içgüdüsel bir yatkınlık.
           </p>
-          <p>
+          <p data-i18n="about-p2">
             Yalova'da yaşıyorum. İstanbul'un hemen yanı başında, ama onun gürültüsünden yeterince uzakta. Gençlik ve Spor Bakanlığı'nda çalışıyor, bir kurumun içinde insanların ve süreçlerin nasıl ilerlediğini gözlemliyorum. Teknik olmayan bir ortamda olmak bana aslında en değerli soruyu öğretiyor: bir şey <em class="display-italic">neden</em> yapılıyor?
           </p>
-          <p>
+          <p data-i18n="about-p3">
             Öğrenmek benim için bir araç değil, zemin. Yeni bir kavram, beklenmedik bir soru ya da hiç adımlamadığım bir alan — bunların her biri içimde bir şeyi devreye sokuyor. Şu an somut bir proje listesi sunacak bir yerde değilim; ama merak etmeye ve denemeye devam ediyorum. Bu site de o sürecin bir parçası.
           </p>
         </div>
@@ -372,19 +372,19 @@
       <aside class="col-span-12 md:col-span-3 md:col-start-10">
         <div class="reveal font-mono text-[11px] tracking-[0.04em] leading-relaxed space-y-5 text-ink-dim dark:text-sand-dim md:pt-2">
           <div>
-            <div class="uppercase tracking-[0.18em] text-ink-faint dark:text-sand-faint mb-1">Konum</div>
-            <div>Yalova, Türkiye</div>
+            <div class="uppercase tracking-[0.18em] text-ink-faint dark:text-sand-faint mb-1" data-i18n="about-loc-lbl">Konum</div>
+            <div data-i18n="about-loc">Yalova, Türkiye</div>
           </div>
           <div>
-            <div class="uppercase tracking-[0.18em] text-ink-faint dark:text-sand-faint mb-1">İlgi alanları</div>
-            <div>Sistem düşüncesi</div>
-            <div>Bilgi yönetimi</div>
-            <div>Web mimarisi</div>
-            <div>Açık kaynak</div>
+            <div class="uppercase tracking-[0.18em] text-ink-faint dark:text-sand-faint mb-1" data-i18n="about-int-lbl">İlgi alanları</div>
+            <div data-i18n="about-int1">Sistem düşüncesi</div>
+            <div data-i18n="about-int2">Bilgi yönetimi</div>
+            <div data-i18n="about-int3">Web mimarisi</div>
+            <div data-i18n="about-int4">Açık kaynak</div>
           </div>
           <div>
-            <div class="uppercase tracking-[0.18em] text-ink-faint dark:text-sand-faint mb-1">Şu an okuyor</div>
-            <div>Donella Meadows —<br />Sistem Düşüncesi</div>
+            <div class="uppercase tracking-[0.18em] text-ink-faint dark:text-sand-faint mb-1" data-i18n="about-read-lbl">Şu an okuyor</div>
+            <div data-i18n="about-read">Donella Meadows —<br />Sistem Düşüncesi</div>
           </div>
         </div>
       </aside>
@@ -404,7 +404,7 @@
         <div class="reveal sticky top-24 font-mono text-[11px] tracking-[0.22em] uppercase text-ink-faint dark:text-sand-faint">
           <div class="flex items-baseline gap-3">
             <span class="tabular">02</span>
-            <span>Deneyim</span>
+            <span data-i18n="nav-exp">Deneyim</span>
           </div>
         </div>
       </div>
@@ -413,17 +413,17 @@
         <ol class="space-y-14">
 
           <li class="reveal grid grid-cols-12 gap-x-6 sm:gap-x-10">
-            <div class="col-span-12 sm:col-span-3 font-mono text-[11px] tabular tracking-[0.04em] text-ink-faint dark:text-sand-faint pt-3">
+            <div class="col-span-12 sm:col-span-3 font-mono text-[11px] tabular tracking-[0.04em] text-ink-faint dark:text-sand-faint pt-3" data-i18n="exp-date">
               2024 — şimdi
             </div>
             <div class="col-span-12 sm:col-span-9">
-              <h3 class="display text-[clamp(1.8rem,3.6vw,2.6rem)]">
+              <h3 class="display text-[clamp(1.8rem,3.6vw,2.6rem)]" data-i18n="exp-org">
                 Gençlik ve Spor Bakanlığı
               </h3>
-              <div class="mt-2 font-mono text-[12px] tracking-[0.04em] text-ink-dim dark:text-sand-dim">
+              <div class="mt-2 font-mono text-[12px] tracking-[0.04em] text-ink-dim dark:text-sand-dim" data-i18n="exp-role">
                 Destek Personeli &nbsp;·&nbsp; Yalova
               </div>
-              <p class="mt-5 max-w-[58ch] text-[16px] sm:text-[17px] leading-[1.7] text-ink dark:text-sand-ink">
+              <p class="mt-5 max-w-[58ch] text-[16px] sm:text-[17px] leading-[1.7] text-ink dark:text-sand-ink" data-i18n="exp-desc">
                 Bir kamu kurumunun işleyişini yakından gözlemliyorum. Süreçlerin ve insan dinamiklerinin nasıl işlediğini anlamak, bana teknik bilgiden farklı ama bir o kadar değerli bir perspektif sunuyor.
               </p>
             </div>
@@ -431,11 +431,11 @@
 
           <!-- Honest placeholder — no fake jobs -->
           <li class="reveal grid grid-cols-12 gap-x-6 sm:gap-x-10 opacity-60">
-            <div class="col-span-12 sm:col-span-3 font-mono text-[11px] tabular tracking-[0.04em] text-ink-faint dark:text-sand-faint pt-3">
+            <div class="col-span-12 sm:col-span-3 font-mono text-[11px] tabular tracking-[0.04em] text-ink-faint dark:text-sand-faint pt-3" data-i18n="exp-prior">
               öncesi
             </div>
             <div class="col-span-12 sm:col-span-9">
-              <p class="font-mono text-[12px] leading-[1.7] text-ink-dim dark:text-sand-dim max-w-[58ch]">
+              <p class="font-mono text-[12px] leading-[1.7] text-ink-dim dark:text-sand-dim max-w-[58ch]" data-i18n="exp-prior-desc">
                 — daha önceki adımlar zaman içinde buraya eklenecek.
               </p>
             </div>
@@ -458,15 +458,15 @@
         <div class="reveal sticky top-24 font-mono text-[11px] tracking-[0.22em] uppercase text-ink-faint dark:text-sand-faint">
           <div class="flex items-baseline gap-3">
             <span class="tabular">03</span>
-            <span>Şu an üzerinde</span>
+            <span data-i18n="sec-t1">Şu an üzerinde</span>
           </div>
-          <div class="ml-8">düşündüklerim</div>
+          <div class="ml-8" data-i18n="sec-t2">düşündüklerim</div>
         </div>
       </div>
 
       <div class="col-span-12 md:col-span-9">
 
-        <p class="reveal max-w-[58ch] text-[16px] sm:text-[17px] leading-[1.7] text-ink-dim dark:text-sand-dim mb-12">
+        <p class="reveal max-w-[58ch] text-[16px] sm:text-[17px] leading-[1.7] text-ink-dim dark:text-sand-dim mb-12" data-i18n="thoughts-intro">
           Henüz paylaşabilecek tamamlanmış bir proje yok. Bu yüzden burada, son zamanlarda zihnimde dönen birkaç soru ve ilgi alanı duruyor. İlk somut çalışmalar tamamlandığında bu bölüm güncellenecek.
         </p>
 
@@ -477,14 +477,14 @@
               i.
             </div>
             <div class="col-span-12 sm:col-span-7">
-              <h4 class="display text-[clamp(1.4rem,2.4vw,1.9rem)] leading-tight">
+              <h4 class="display text-[clamp(1.4rem,2.4vw,1.9rem)] leading-tight" data-i18n="t1-title">
                 Bilgi nasıl yerleşir?
               </h4>
-              <p class="mt-2 max-w-[52ch] text-[15px] leading-[1.65] text-ink-dim dark:text-sand-dim">
+              <p class="mt-2 max-w-[52ch] text-[15px] leading-[1.65] text-ink-dim dark:text-sand-dim" data-i18n="t1-desc">
                 Bireyin not aldığı şey ile bir kurumun hatırladığı şey arasındaki mesafe.
               </p>
             </div>
-            <div class="col-span-12 sm:col-span-4 font-mono text-[11px] tracking-[0.04em] text-ink-faint dark:text-sand-faint sm:text-right pt-2 mt-3 sm:mt-0">
+            <div class="col-span-12 sm:col-span-4 font-mono text-[11px] tracking-[0.04em] text-ink-faint dark:text-sand-faint sm:text-right pt-2 mt-3 sm:mt-0" data-i18n="t1-tags">
               bilgi yönetimi · ikinci beyin
             </div>
           </li>
@@ -494,14 +494,14 @@
               ii.
             </div>
             <div class="col-span-12 sm:col-span-7">
-              <h4 class="display text-[clamp(1.4rem,2.4vw,1.9rem)] leading-tight">
+              <h4 class="display text-[clamp(1.4rem,2.4vw,1.9rem)] leading-tight" data-i18n="t2-title">
                 Küçük web siteleri, büyük fikirler.
               </h4>
-              <p class="mt-2 max-w-[52ch] text-[15px] leading-[1.65] text-ink-dim dark:text-sand-dim">
+              <p class="mt-2 max-w-[52ch] text-[15px] leading-[1.65] text-ink-dim dark:text-sand-dim" data-i18n="t2-desc">
                 Kişisel sitelerin, dijital bir kasaba meydanı kurmadaki sessiz rolü.
               </p>
             </div>
-            <div class="col-span-12 sm:col-span-4 font-mono text-[11px] tracking-[0.04em] text-ink-faint dark:text-sand-faint sm:text-right pt-2 mt-3 sm:mt-0">
+            <div class="col-span-12 sm:col-span-4 font-mono text-[11px] tracking-[0.04em] text-ink-faint dark:text-sand-faint sm:text-right pt-2 mt-3 sm:mt-0" data-i18n="t2-tags">
               web mimarisi · indieweb
             </div>
           </li>
@@ -511,14 +511,14 @@
               iii.
             </div>
             <div class="col-span-12 sm:col-span-7">
-              <h4 class="display text-[clamp(1.4rem,2.4vw,1.9rem)] leading-tight">
+              <h4 class="display text-[clamp(1.4rem,2.4vw,1.9rem)] leading-tight" data-i18n="t3-title">
                 Kurumlar neyi unutur?
               </h4>
-              <p class="mt-2 max-w-[52ch] text-[15px] leading-[1.65] text-ink-dim dark:text-sand-dim">
+              <p class="mt-2 max-w-[52ch] text-[15px] leading-[1.65] text-ink-dim dark:text-sand-dim" data-i18n="t3-desc">
                 Süreçlerin yazılı olmayan kısmı, yani çoğu kısmı.
               </p>
             </div>
-            <div class="col-span-12 sm:col-span-4 font-mono text-[11px] tracking-[0.04em] text-ink-faint dark:text-sand-faint sm:text-right pt-2 mt-3 sm:mt-0">
+            <div class="col-span-12 sm:col-span-4 font-mono text-[11px] tracking-[0.04em] text-ink-faint dark:text-sand-faint sm:text-right pt-2 mt-3 sm:mt-0" data-i18n="t3-tags">
               sistem düşüncesi
             </div>
           </li>
@@ -528,20 +528,20 @@
               iv.
             </div>
             <div class="col-span-12 sm:col-span-7">
-              <h4 class="display text-[clamp(1.4rem,2.4vw,1.9rem)] leading-tight">
+              <h4 class="display text-[clamp(1.4rem,2.4vw,1.9rem)] leading-tight" data-i18n="t4-title">
                 Açık kaynak bir alışkanlıktır.
               </h4>
-              <p class="mt-2 max-w-[52ch] text-[15px] leading-[1.65] text-ink-dim dark:text-sand-dim">
+              <p class="mt-2 max-w-[52ch] text-[15px] leading-[1.65] text-ink-dim dark:text-sand-dim" data-i18n="t4-desc">
                 Bir lisanstan önce, paylaşmaya yatkın bir tutum.
               </p>
             </div>
-            <div class="col-span-12 sm:col-span-4 font-mono text-[11px] tracking-[0.04em] text-ink-faint dark:text-sand-faint sm:text-right pt-2 mt-3 sm:mt-0">
+            <div class="col-span-12 sm:col-span-4 font-mono text-[11px] tracking-[0.04em] text-ink-faint dark:text-sand-faint sm:text-right pt-2 mt-3 sm:mt-0" data-i18n="t4-tags">
               açık kaynak · kültür
             </div>
           </li>
         </ul>
 
-        <p class="reveal mt-10 font-mono text-[11px] tracking-[0.04em] text-ink-faint dark:text-sand-faint">
+        <p class="reveal mt-10 font-mono text-[11px] tracking-[0.04em] text-ink-faint dark:text-sand-faint" data-i18n="thoughts-ongoing">
           — devam ediyor.
         </p>
       </div>
@@ -561,15 +561,15 @@
         <div class="reveal font-mono text-[11px] tracking-[0.22em] uppercase text-ink-faint dark:text-sand-faint">
           <div class="flex items-baseline gap-3">
             <span class="tabular">04</span>
-            <span>İletişim</span>
+            <span data-i18n="nav-contact">İletişim</span>
           </div>
         </div>
       </div>
 
       <div class="col-span-12 md:col-span-9">
         <h2 class="reveal display text-[clamp(2rem,5.5vw,4.4rem)] max-w-[16ch]">
-          Bir e-posta yeter.
-          <span class="display-italic text-rust dark:text-sand">Yazışalım.</span>
+          <span data-i18n="contact-heading">Bir e-posta yeter.</span>
+          <span class="display-italic text-rust dark:text-sand" data-i18n="contact-cta">Yazışalım.</span>
         </h2>
 
         <div class="reveal mt-10 flex flex-col sm:flex-row sm:items-end gap-8 sm:gap-16">
@@ -582,7 +582,7 @@
           <a href="#" class="ulink hover:text-ink dark:hover:text-sand-ink">LinkedIn <span aria-hidden="true">↗</span></a>
           <a href="#" class="ulink hover:text-ink dark:hover:text-sand-ink">GitHub <span aria-hidden="true">↗</span></a>
           <a href="#" class="ulink hover:text-ink dark:hover:text-sand-ink">X / Twitter <span aria-hidden="true">↗</span></a>
-          <span class="text-ink-faint dark:text-sand-faint normal-case tracking-[0.04em]">— sosyal hesaplar yayına alınma sırasında eklenecek.</span>
+          <span class="text-ink-faint dark:text-sand-faint normal-case tracking-[0.04em]" data-i18n="contact-social">— sosyal hesaplar yayına alınma sırasında eklenecek.</span>
         </div>
       </div>
     </div>
@@ -596,14 +596,14 @@
 
   <div class="grid grid-cols-12 gap-x-6 gap-y-8 font-mono text-[11px] tracking-[0.04em] text-ink-faint dark:text-sand-faint">
     <div class="col-span-12 sm:col-span-4">
-      <p class="display-italic not-italic text-ink-dim dark:text-sand-dim text-[14px] leading-snug max-w-[28ch]">
+      <p class=”display-italic not-italic text-ink-dim dark:text-sand-dim text-[14px] leading-snug max-w-[28ch]” data-i18n=”footer-quote”>
         “Bilmek, merak etmekten doğar.”
       </p>
     </div>
 
     <div class="col-span-6 sm:col-span-4 sm:text-center">
-      <div class="uppercase tracking-[0.22em]">Son güncelleme</div>
-      <div class="mt-1 text-ink-dim dark:text-sand-dim tabular">Nisan 2025</div>
+      <div class="uppercase tracking-[0.22em]" data-i18n="footer-updated">Son güncelleme</div>
+      <div class="mt-1 text-ink-dim dark:text-sand-dim tabular" data-i18n="footer-date">Nisan 2025</div>
     </div>
 
     <div class="col-span-6 sm:col-span-4 sm:text-right">
@@ -641,6 +641,139 @@
       localStorage.setItem('mkb-theme', root.classList.contains('dark') ? 'dark' : 'light');
       paint();
     });
+  })();
+
+  // Language toggle
+  (function () {
+    const T = {
+      tr: {
+        'nav-about':       'Hakkında',
+        'nav-exp':         'Deneyim',
+        'nav-thoughts':    'Düşünceler',
+        'nav-contact':     'İletişim',
+        'hero-subtitle':   'Sistem Seyyahı',
+        'hero-h1-italic':  'Sistem Seyyahı.',
+        'hero-tagline':    'Yalova\'da yaşıyor, her şeyin birbiriyle nasıl bağlandığını anlamaya çalışıyor.',
+        'hero-now':        'şu an →',
+        'hero-status':     'Gençlik ve Spor Bakanlığı, Destek Personeli',
+        'hero-scroll':     'aşağı',
+        'about-loc-lbl':   'Konum',
+        'about-loc':       'Yalova, Türkiye',
+        'about-int-lbl':   'İlgi alanları',
+        'about-int1':      'Sistem düşüncesi',
+        'about-int2':      'Bilgi yönetimi',
+        'about-int3':      'Web mimarisi',
+        'about-int4':      'Açık kaynak',
+        'about-read-lbl':  'Şu an okuyor',
+        'about-read':      'Donella Meadows —<br />Sistem Düşüncesi',
+        'about-p1':        'Tek bir alana yerleşmek yerine birçok alanın kesişim noktalarında durmayı tercih ediyorum. Buna <em class="display-italic text-rust dark:text-sand not-italic">generalist</em> deniyor; zaman zaman eleştiri gibi söyleniyor, ama ben bunu bir kısıtlama değil, bir hareket serbestisi olarak okuyorum. Her katmanı görmek, sistemleri bütün olarak anlamak — bu benim için bilinçli bir tercih değil, içgüdüsel bir yatkınlık.',
+        'about-p2':        'Yalova\'da yaşıyorum. İstanbul\'un hemen yanı başında, ama onun gürültüsünden yeterince uzakta. Gençlik ve Spor Bakanlığı\'nda çalışıyor, bir kurumun içinde insanların ve süreçlerin nasıl ilerlediğini gözlemliyorum. Teknik olmayan bir ortamda olmak bana aslında en değerli soruyu öğretiyor: bir şey <em class="display-italic">neden</em> yapılıyor?',
+        'about-p3':        'Öğrenmek benim için bir araç değil, zemin. Yeni bir kavram, beklenmedik bir soru ya da hiç adımlamadığım bir alan — bunların her biri içimde bir şeyi devreye sokuyor. Şu an somut bir proje listesi sunacak bir yerde değilim; ama merak etmeye ve denemeye devam ediyorum. Bu site de o sürecin bir parçası.',
+        'exp-date':        '2024 — şimdi',
+        'exp-org':         'Gençlik ve Spor Bakanlığı',
+        'exp-role':        'Destek Personeli &nbsp;·&nbsp; Yalova',
+        'exp-desc':        'Bir kamu kurumunun işleyişini yakından gözlemliyorum. Süreçlerin ve insan dinamiklerinin nasıl işlediğini anlamak, bana teknik bilgiden farklı ama bir o kadar değerli bir perspektif sunuyor.',
+        'exp-prior':       'öncesi',
+        'exp-prior-desc':  '— daha önceki adımlar zaman içinde buraya eklenecek.',
+        'sec-t1':          'Şu an üzerinde',
+        'sec-t2':          'düşündüklerim',
+        'thoughts-intro':  'Henüz paylaşabilecek tamamlanmış bir proje yok. Bu yüzden burada, son zamanlarda zihnimde dönen birkaç soru ve ilgi alanı duruyor. İlk somut çalışmalar tamamlandığında bu bölüm güncellenecek.',
+        't1-title':        'Bilgi nasıl yerleşir?',
+        't1-desc':         'Bireyin not aldığı şey ile bir kurumun hatırladığı şey arasındaki mesafe.',
+        't1-tags':         'bilgi yönetimi · ikinci beyin',
+        't2-title':        'Küçük web siteleri, büyük fikirler.',
+        't2-desc':         'Kişisel sitelerin, dijital bir kasaba meydanı kurmadaki sessiz rolü.',
+        't2-tags':         'web mimarisi · indieweb',
+        't3-title':        'Kurumlar neyi unutur?',
+        't3-desc':         'Süreçlerin yazılı olmayan kısmı, yani çoğu kısmı.',
+        't3-tags':         'sistem düşüncesi',
+        't4-title':        'Açık kaynak bir alışkanlıktır.',
+        't4-desc':         'Bir lisanstan önce, paylaşmaya yatkın bir tutum.',
+        't4-tags':         'açık kaynak · kültür',
+        'thoughts-ongoing':'— devam ediyor.',
+        'contact-heading': 'Bir e-posta yeter.',
+        'contact-cta':     'Yazışalım.',
+        'contact-social':  '— sosyal hesaplar yayına alınma sırasında eklenecek.',
+        'footer-quote':    '"Bilmek, merak etmekten doğar."',
+        'footer-updated':  'Son güncelleme',
+        'footer-date':     'Nisan 2025',
+      },
+      en: {
+        'nav-about':       'About',
+        'nav-exp':         'Experience',
+        'nav-thoughts':    'Thoughts',
+        'nav-contact':     'Contact',
+        'hero-subtitle':   'System Wanderer',
+        'hero-h1-italic':  'System Wanderer.',
+        'hero-tagline':    'Based in Yalova, trying to understand how everything connects.',
+        'hero-now':        'now →',
+        'hero-status':     'Ministry of Youth and Sports, Support Staff',
+        'hero-scroll':     'scroll',
+        'about-loc-lbl':   'Location',
+        'about-loc':       'Yalova, Turkey',
+        'about-int-lbl':   'Interests',
+        'about-int1':      'Systems thinking',
+        'about-int2':      'Knowledge management',
+        'about-int3':      'Web architecture',
+        'about-int4':      'Open source',
+        'about-read-lbl':  'Currently reading',
+        'about-read':      'Donella Meadows —<br />Thinking in Systems',
+        'about-p1':        'Rather than settling into a single field, I prefer standing at the intersections of many. This is called being a <em class="display-italic text-rust dark:text-sand not-italic">generalist</em> — sometimes said as a criticism, but I read it not as a constraint, but as freedom of movement. Seeing every layer, understanding systems as a whole — for me this is not a conscious choice, but an instinctive inclination.',
+        'about-p2':        'I live in Yalova. Right next to Istanbul, but far enough from its noise. I work at the Ministry of Youth and Sports, observing how people and processes move within an institution. Being in a non-technical environment teaches me what is actually the most valuable question: <em class="display-italic">why</em> is something done?',
+        'about-p3':        'Learning for me is not a tool, but the ground itself. A new concept, an unexpected question, a field I\'ve never set foot in — each of these activates something in me. I\'m not in a place right now to present a concrete list of projects; but I keep wondering and experimenting. This site is part of that process.',
+        'exp-date':        '2024 — present',
+        'exp-org':         'Ministry of Youth and Sports',
+        'exp-role':        'Support Staff &nbsp;·&nbsp; Yalova',
+        'exp-desc':        'I closely observe the workings of a public institution. Understanding how processes and human dynamics operate offers me a perspective that is different from technical knowledge, but equally valuable.',
+        'exp-prior':       'prior',
+        'exp-prior-desc':  '— earlier steps will be added here over time.',
+        'sec-t1':          'What I\'m currently',
+        'sec-t2':          'thinking about',
+        'thoughts-intro':  'No finished projects to share yet. So what sits here instead are a few questions and areas of interest circling my mind lately. This section will be updated when the first concrete work is complete.',
+        't1-title':        'How does knowledge settle?',
+        't1-desc':         'The distance between what an individual notes and what an institution remembers.',
+        't1-tags':         'knowledge management · second brain',
+        't2-title':        'Small websites, big ideas.',
+        't2-desc':         'The quiet role of personal sites in building a digital town square.',
+        't2-tags':         'web architecture · indieweb',
+        't3-title':        'What do institutions forget?',
+        't3-desc':         'The unwritten part of processes — which is most of it.',
+        't3-tags':         'systems thinking',
+        't4-title':        'Open source is a habit.',
+        't4-desc':         'Before a license, an inclination toward sharing.',
+        't4-tags':         'open source · culture',
+        'thoughts-ongoing':'— ongoing.',
+        'contact-heading': 'An email is enough.',
+        'contact-cta':     'Let\'s talk.',
+        'contact-social':  '— social accounts will be added as they go live.',
+        'footer-quote':    '"Knowledge grows from curiosity."',
+        'footer-updated':  'Last updated',
+        'footer-date':     'April 2025',
+      }
+    };
+
+    const langCur = document.getElementById('lang-cur');
+    const langBtn = document.getElementById('lang-btn');
+    let lang = localStorage.getItem('mkb-lang') || 'tr';
+
+    function applyLang() {
+      document.documentElement.lang = lang;
+      langCur.textContent = lang;
+      langBtn.textContent = lang === 'tr' ? 'en' : 'tr';
+      const dict = T[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+    }
+
+    langBtn.addEventListener('click', () => {
+      lang = lang === 'tr' ? 'en' : 'tr';
+      localStorage.setItem('mkb-lang', lang);
+      applyLang();
+    });
+
+    applyLang();
   })();
 
   // Scroll reveal
