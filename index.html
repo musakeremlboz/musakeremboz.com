@@ -49,21 +49,13 @@
 </script>
 
 <style>
-  /* ───────── TWEAK AXES — three CSS-variable knobs that reshape the feel ─────────
-     --voice         : 'editorial' | 'field' | 'manifesto'
-     --atmosphere    : 'dawn' | 'day' | 'dusk' | 'midnight'
-     --tempo         : 'hushed' | 'measured' | 'brisk'
-  */
-
   :root {
-    /* Tempo defaults (Measured) */
-    --rhythm-block-y: 1;          /* multiplier on section padding */
-    --rhythm-line: 1.7;           /* prose line-height */
-    --rhythm-reveal: 700ms;       /* reveal duration */
-    --rhythm-stagger: 40ms;       /* reveal stagger per element */
-    --rhythm-rule: 0.12;          /* hairline opacity */
+    --rhythm-block-y: 1;
+    --rhythm-line: 1.7;
+    --rhythm-reveal: 700ms;
+    --rhythm-stagger: 40ms;
+    --rhythm-rule: 0.12;
 
-    /* Voice defaults (Editorial) */
     --voice-display-family: 'Fraunces', serif;
     --voice-display-weight: 400;
     --voice-display-vsettings: "opsz" 144, "SOFT" 30;
@@ -74,7 +66,6 @@
     --voice-italic-style: italic;
     --voice-accent-saturation: 1;
 
-    /* Atmosphere defaults (Day = warm paper) */
     --atm-paper: #FAF7F2;
     --atm-paper-dim: #EFEAE0;
     --atm-ink: #1A1A1A;
@@ -85,72 +76,7 @@
     --atm-grain-blend: multiply;
   }
 
-  /* ── VOICE ────────────────────────────────────────────────── */
-  /* Field Notes — handwritten/journal feel: monospace display, tighter, less italic flourish */
-  html[data-voice="field"] {
-    --voice-display-family: 'JetBrains Mono', ui-monospace, monospace;
-    --voice-display-weight: 500;
-    --voice-display-vsettings: normal;
-    --voice-italic-vsettings: normal;
-    --voice-display-tracking: -0.02em;
-    --voice-display-leading: 1.05;
-    --voice-italic-style: normal;
-    --voice-accent-saturation: 0.55;
-  }
-  html[data-voice="field"] .display-italic {
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 4px;
-    text-decoration-color: var(--atm-accent);
-  }
-
-  /* Manifesto — loud, condensed-feel via wide weight + tighter tracking + uppercase display */
-  html[data-voice="manifesto"] {
-    --voice-display-weight: 600;
-    --voice-display-vsettings: "opsz" 144, "SOFT" 0;
-    --voice-italic-vsettings: "opsz" 144, "SOFT" 0;
-    --voice-display-tracking: -0.05em;
-    --voice-display-leading: 0.88;
-    --voice-display-transform: uppercase;
-    --voice-accent-saturation: 1.25;
-  }
-
-  /* ── ATMOSPHERE ───────────────────────────────────────────── */
-  /* Dawn — pale rose paper, warm taupe ink, muted clay accent */
-  html[data-atmosphere="dawn"] {
-    --atm-paper: #F7EFE8;
-    --atm-paper-dim: #ECE2D7;
-    --atm-ink: #2A2018;
-    --atm-ink-dim: #6B5B4D;
-    --atm-ink-faint: #9C8B7B;
-    --atm-accent: #B8553A;
-    --atm-grain-opacity: 0.04;
-    --atm-grain-blend: multiply;
-  }
-  /* Day — current default, warm paper */
-  html[data-atmosphere="day"] {
-    --atm-paper: #FAF7F2;
-    --atm-paper-dim: #EFEAE0;
-    --atm-ink: #1A1A1A;
-    --atm-ink-dim: #5A5750;
-    --atm-ink-faint: #8A857B;
-    --atm-accent: #C4452D;
-    --atm-grain-opacity: 0;
-  }
-  /* Dusk — overcast cool grey, faded brick accent */
-  html[data-atmosphere="dusk"] {
-    --atm-paper: #E8E5DE;
-    --atm-paper-dim: #DCD8D0;
-    --atm-ink: #2C2A28;
-    --atm-ink-dim: #6E6B66;
-    --atm-ink-faint: #9A9690;
-    --atm-accent: #A04230;
-    --atm-grain-opacity: 0.06;
-    --atm-grain-blend: multiply;
-  }
-  /* Midnight — dark mode equivalent, takes over .dark too */
-  html[data-atmosphere="midnight"],
-  html[data-atmosphere="midnight"].dark {
+  html.dark {
     --atm-paper: #0E0E0C;
     --atm-paper-dim: #1A1A18;
     --atm-ink: #EAE7E0;
@@ -161,30 +87,7 @@
     --atm-grain-blend: screen;
   }
 
-  /* ── TEMPO ────────────────────────────────────────────────── */
-  html[data-tempo="hushed"] {
-    --rhythm-block-y: 1.45;
-    --rhythm-line: 1.85;
-    --rhythm-reveal: 1100ms;
-    --rhythm-stagger: 80ms;
-    --rhythm-rule: 0.08;
-  }
-  html[data-tempo="measured"] {
-    --rhythm-block-y: 1;
-    --rhythm-line: 1.7;
-    --rhythm-reveal: 700ms;
-    --rhythm-stagger: 40ms;
-    --rhythm-rule: 0.12;
-  }
-  html[data-tempo="brisk"] {
-    --rhythm-block-y: 0.7;
-    --rhythm-line: 1.55;
-    --rhythm-reveal: 380ms;
-    --rhythm-stagger: 18ms;
-    --rhythm-rule: 0.18;
-  }
-
-  /* ── APPLY axes to the existing painted layer ────────────── */
+  /* ── APPLY vars to the painted layer ────────────── */
   body { background: var(--atm-paper); color: var(--atm-ink); }
   .dark body { background: var(--atm-paper); color: var(--atm-ink); }
 
@@ -226,7 +129,7 @@
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
     transition: opacity 600ms ease;
   }
-  main, header, footer, .tweaks { position: relative; z-index: 2; }
+  main, header, footer { position: relative; z-index: 2; }
 
   /* Section block padding scales with tempo */
   #hakkinda, #deneyim, #dusunceler, #iletisim {
@@ -670,8 +573,8 @@
         </h2>
 
         <div class="reveal mt-10 flex flex-col sm:flex-row sm:items-end gap-8 sm:gap-16">
-          <a href="/cdn-cgi/l/email-protection#b9cdd1dcf9d4cccad8d2dccbdcd4dbd6c397d4dc" class="ulink display text-[clamp(1.6rem,3.2vw,2.4rem)] text-ink dark:text-sand-ink">
-            <span class="__cf_email__" data-cfemail="42362a27022f373123292730272f202d386c2f27">[email&#160;protected]</span>
+          <a href="mailto:contact@musakeremboz.me" class="ulink display text-[clamp(1.6rem,3.2vw,2.4rem)] text-ink dark:text-sand-ink">
+            contact@musakeremboz.me
           </a>
         </div>
 
@@ -717,258 +620,6 @@
   <span id="theme-glyph" class="font-mono text-[14px] leading-none">●</span>
 </button>
 
-<!-- ───────────────────────────── TWEAKS PANEL ───────────────────────────── -->
-<style>
-  .tweaks {
-    position: fixed;
-    top: 80px;
-    right: 24px;
-    width: 280px;
-    background: color-mix(in srgb, var(--atm-paper) 92%, transparent);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid color-mix(in srgb, var(--atm-ink) 14%, transparent);
-    color: var(--atm-ink);
-    z-index: 60;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 11px;
-    transform: translateX(calc(100% + 32px));
-    transition: transform 360ms cubic-bezier(.2,.6,.2,1);
-    box-shadow: 0 12px 40px -12px color-mix(in srgb, var(--atm-ink) 18%, transparent);
-  }
-  .tweaks.open { transform: translateX(0); }
-  @media (max-width: 640px) {
-    .tweaks { right: 12px; left: 12px; width: auto; top: 72px; }
-  }
-
-  .tweaks__head {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 12px 16px;
-    border-bottom: 1px solid color-mix(in srgb, var(--atm-ink) 10%, transparent);
-  }
-  .tweaks__title {
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
-    color: var(--atm-ink-faint);
-  }
-  .tweaks__close {
-    background: transparent; border: 0; color: var(--atm-ink-dim);
-    cursor: pointer; font: inherit; padding: 2px 4px;
-  }
-  .tweaks__close:hover { color: var(--atm-ink); }
-
-  .tweaks__body { padding: 6px 16px 16px; }
-
-  .tweak-axis { padding: 14px 0; border-top: 1px dashed color-mix(in srgb, var(--atm-ink) 12%, transparent); }
-  .tweak-axis:first-child { border-top: 0; }
-  .tweak-axis__label {
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--atm-ink-faint);
-    margin-bottom: 10px;
-    display: flex; justify-content: space-between; align-items: baseline;
-  }
-  .tweak-axis__label .val { color: var(--atm-ink); letter-spacing: 0.04em; text-transform: none; }
-
-  .tweak-options {
-    display: flex; gap: 1px;
-    background: color-mix(in srgb, var(--atm-ink) 10%, transparent);
-    border: 1px solid color-mix(in srgb, var(--atm-ink) 10%, transparent);
-  }
-  .tweak-options button {
-    flex: 1;
-    background: var(--atm-paper);
-    color: var(--atm-ink-dim);
-    border: 0;
-    padding: 7px 4px;
-    font: inherit;
-    cursor: pointer;
-    text-transform: lowercase;
-    letter-spacing: 0.04em;
-    transition: background 200ms ease, color 200ms ease;
-  }
-  .tweak-options button:hover { color: var(--atm-ink); }
-  .tweak-options button[aria-selected="true"] {
-    background: var(--atm-ink);
-    color: var(--atm-paper);
-  }
-
-  /* Atmosphere — show swatch dots */
-  .tweak-atm { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
-  .tweak-atm button {
-    background: transparent;
-    border: 1px solid color-mix(in srgb, var(--atm-ink) 12%, transparent);
-    cursor: pointer;
-    padding: 8px 4px 6px;
-    font: inherit;
-    color: var(--atm-ink-dim);
-    text-transform: lowercase;
-    letter-spacing: 0.04em;
-    display: flex; flex-direction: column; align-items: center; gap: 6px;
-    transition: border-color 200ms ease, color 200ms ease, transform 200ms ease;
-  }
-  .tweak-atm button:hover { color: var(--atm-ink); transform: translateY(-1px); }
-  .tweak-atm button[aria-selected="true"] {
-    border-color: var(--atm-ink);
-    color: var(--atm-ink);
-  }
-  .tweak-atm .swatches {
-    display: flex; gap: 2px;
-  }
-  .tweak-atm .swatches i {
-    width: 10px; height: 10px; display: block; border-radius: 50%;
-    border: 1px solid color-mix(in srgb, #000 18%, transparent);
-  }
-
-  /* Tweaks toggle button (replaces nothing — adds beside theme toggle) */
-  .tweaks-fab {
-    position: fixed;
-    bottom: 6px; right: 6px;
-    z-index: 51;
-    /* sit just above the existing theme button */
-    transform: translateY(-56px);
-    width: 40px; height: 40px;
-    display: grid; place-items: center;
-    background: color-mix(in srgb, var(--atm-paper) 80%, transparent);
-    backdrop-filter: blur(8px);
-    border: 1px solid color-mix(in srgb, var(--atm-ink) 15%, transparent);
-    border-radius: 9999px;
-    color: var(--atm-ink-dim);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    cursor: pointer;
-    transition: color 200ms ease, transform 200ms ease;
-  }
-  .tweaks-fab:hover { color: var(--atm-ink); }
-</style>
-
-<button class="tweaks-fab" id="tweaks-fab" aria-label="Tweaks aç">⌘</button>
-
-<aside class="tweaks" id="tweaks" aria-label="Tweaks paneli">
-  <div class="tweaks__head">
-    <div class="tweaks__title">Tweaks</div>
-    <button class="tweaks__close" id="tweaks-close" aria-label="Kapat">×</button>
-  </div>
-  <div class="tweaks__body">
-
-    <div class="tweak-axis">
-      <div class="tweak-axis__label">
-        <span>Voice</span><span class="val" data-val="voice"></span>
-      </div>
-      <div class="tweak-options" data-axis="voice" role="tablist">
-        <button data-value="editorial" role="tab">editorial</button>
-        <button data-value="field" role="tab">field</button>
-        <button data-value="manifesto" role="tab">manifesto</button>
-      </div>
-    </div>
-
-    <div class="tweak-axis">
-      <div class="tweak-axis__label">
-        <span>Atmosphere</span><span class="val" data-val="atmosphere"></span>
-      </div>
-      <div class="tweak-atm" data-axis="atmosphere" role="tablist">
-        <button data-value="dawn" role="tab" data-paper="#F7EFE8" data-ink="#2A2018" data-accent="#B8553A">
-          <span class="swatches"><i style="background:#F7EFE8"></i><i style="background:#B8553A"></i></span>
-          dawn
-        </button>
-        <button data-value="day" role="tab" data-paper="#FAF7F2" data-ink="#1A1A1A" data-accent="#C4452D">
-          <span class="swatches"><i style="background:#FAF7F2"></i><i style="background:#C4452D"></i></span>
-          day
-        </button>
-        <button data-value="dusk" role="tab" data-paper="#E8E5DE" data-ink="#2C2A28" data-accent="#A04230">
-          <span class="swatches"><i style="background:#E8E5DE"></i><i style="background:#A04230"></i></span>
-          dusk
-        </button>
-        <button data-value="midnight" role="tab" data-paper="#0E0E0C" data-ink="#EAE7E0" data-accent="#D4A574">
-          <span class="swatches"><i style="background:#0E0E0C"></i><i style="background:#D4A574"></i></span>
-          midnight
-        </button>
-      </div>
-    </div>
-
-    <div class="tweak-axis">
-      <div class="tweak-axis__label">
-        <span>Tempo</span><span class="val" data-val="tempo"></span>
-      </div>
-      <div class="tweak-options" data-axis="tempo" role="tablist">
-        <button data-value="hushed" role="tab">hushed</button>
-        <button data-value="measured" role="tab">measured</button>
-        <button data-value="brisk" role="tab">brisk</button>
-      </div>
-    </div>
-
-  </div>
-</aside>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ───────────────────────────── TWEAKS ─────────────────────────────
-  (function () {
-    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-      "voice": "editorial",
-      "atmosphere": "midnight",
-      "tempo": "brisk"
-    }/*EDITMODE-END*/;
-
-    const root = document.documentElement;
-    const panel = document.getElementById('tweaks');
-    const fab = document.getElementById('tweaks-fab');
-    const closeBtn = document.getElementById('tweaks-close');
-    const valLabels = panel.querySelectorAll('[data-val]');
-
-    const stored = (() => {
-      try { return JSON.parse(localStorage.getItem('mkb-tweaks') || '{}'); }
-      catch (_) { return {}; }
-    })();
-    const state = Object.assign({}, TWEAK_DEFAULTS, stored);
-
-    function apply() {
-      root.dataset.voice = state.voice;
-      root.dataset.atmosphere = state.atmosphere;
-      root.dataset.tempo = state.tempo;
-      root.classList.toggle('dark', state.atmosphere === 'midnight');
-
-      panel.querySelectorAll('[data-axis]').forEach(group => {
-        const axis = group.dataset.axis;
-        group.querySelectorAll('button').forEach(btn => {
-          btn.setAttribute('aria-selected', btn.dataset.value === state[axis] ? 'true' : 'false');
-        });
-      });
-      valLabels.forEach(el => { el.textContent = state[el.dataset.val]; });
-
-      try {
-        window.parent.postMessage({ type: '__edit_mode_set_keys', edits: state }, '*');
-      } catch (_) {}
-      localStorage.setItem('mkb-tweaks', JSON.stringify(state));
-    }
-
-    panel.querySelectorAll('[data-axis]').forEach(group => {
-      const axis = group.dataset.axis;
-      group.addEventListener('click', (e) => {
-        const btn = e.target.closest('button[data-value]');
-        if (!btn) return;
-        state[axis] = btn.dataset.value;
-        apply();
-      });
-    });
-
-    function open() { panel.classList.add('open'); }
-    function close() {
-      panel.classList.remove('open');
-      try { window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*'); } catch (_) {}
-    }
-    fab.addEventListener('click', open);
-    closeBtn.addEventListener('click', close);
-
-    window.addEventListener('message', (e) => {
-      const t = e.data && e.data.type;
-      if (t === '__activate_edit_mode') open();
-      else if (t === '__deactivate_edit_mode') close();
-    });
-    try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch (_) {}
-
-    apply();
-  })();
-</script>
 
 <script>
   // Dark mode — restore from storage / system pref
