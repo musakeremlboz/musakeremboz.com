@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Musa Kerem Boz — Sistem Seyyahı</title>
+<meta name="description" content="Musa Kerem Boz. Yalova'da yaşıyor, her şeyin birbiriyle nasıl bağlandığını anlamaya çalışıyor." />
+<meta property="og:title" content="Musa Kerem Boz — Sistem Seyyahı" />
+<meta property="og:description" content="Yalova'da yaşıyor, her şeyin birbiriyle nasıl bağlandığını anlamaya çalışıyor." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://musakeremboz.com" />
+<meta name="twitter:card" content="summary" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
+          sans:  ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          mono:  ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+        },
+        colors: {
+          paper: '#FAF7F2',
+          ink:   '#1A1A1A',
+          rust:  '#C4452D',
+          'paper-dim': '#EFEAE0',
+          'ink-dim':   '#5A5750',
+          'ink-faint': '#8A857B',
+          night:       '#0E0E0C',
+          'night-dim': '#1A1A18',
+          sand:        '#D4A574',
+          'sand-ink':  '#EAE7E0',
+          'sand-dim':  '#9A958B',
+          'sand-faint':'#5C5A53',
+        },
+        letterSpacing: {
+          tightest: '-0.04em',
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  /* ───────── TWEAK AXES — three CSS-variable knobs that reshape the feel ─────────
+     --voice         : 'editorial' | 'field' | 'manifesto'
+     --atmosphere    : 'dawn' | 'day' | 'dusk' | 'midnight'
+     --tempo         : 'hushed' | 'measured' | 'brisk'
+  */
+
+  :root {
+    /* Tempo defaults (Measured) */
+    --rhythm-block-y: 1;          /* multiplier on section padding */
+    --rhythm-line: 1.7;           /* prose line-height */
+    --rhythm-reveal: 700ms;       /* reveal duration */
+    --rhythm-stagger: 40ms;       /* reveal stagger per element */
+    --rhythm-rule: 0.12;          /* hairline opacity */
+
+    /* Voice defaults (Editorial) */
+    --voice-display-family: 'Fraunces', serif;
+    --voice-display-weight: 400;
+    --voice-display-vsettings: "opsz" 144, "SOFT" 30;
+    --voice-italic-vsettings: "opsz" 144, "SOFT" 80;
+    --voice-display-tracking: -0.035em;
+    --voice-display-leading: 0.95;
+    --voice-display-transform: none;
+    --voice-italic-style: italic;
+    --voice-accent-saturation: 1;
+
+    /* Atmosphere defaults (Day = warm paper) */
+    --atm-paper: #FAF7F2;
+    --atm-paper-dim: #EFEAE0;
+    --atm-ink: #1A1A1A;
+    --atm-ink-dim: #5A5750;
+    --atm-ink-faint: #8A857B;
+    --atm-accent: #C4452D;
+    --atm-grain-opacity: 0;
+    --atm-grain-blend: multiply;
+  }
+
+  /* ── VOICE ────────────────────────────────────────────────── */
+  /* Field Notes — handwritten/journal feel: monospace display, tighter, less italic flourish */
+  html[data-voice="field"] {
+    --voice-display-family: 'JetBrains Mono', ui-monospace, monospace;
+    --voice-display-weight: 500;
+    --voice-display-vsettings: normal;
+    --voice-italic-vsettings: normal;
+    --voice-display-tracking: -0.02em;
+    --voice-display-leading: 1.05;
+    --voice-italic-style: normal;
+    --voice-accent-saturation: 0.55;
+  }
+  html[data-voice="field"] .display-italic {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--atm-accent);
+  }
+
+  /* Manifesto — loud, condensed-feel via wide weight + tighter tracking + uppercase display */
+  html[data-voice="manifesto"] {
+    --voice-display-weight: 600;
+    --voice-display-vsettings: "opsz" 144, "SOFT" 0;
+    --voice-italic-vsettings: "opsz" 144, "SOFT" 0;
+    --voice-display-tracking: -0.05em;
+    --voice-display-leading: 0.88;
+    --voice-display-transform: uppercase;
+    --voice-accent-saturation: 1.25;
+  }
+
+  /* ── ATMOSPHERE ───────────────────────────────────────────── */
+  /* Dawn — pale rose paper, warm taupe ink, muted clay accent */
+  html[data-atmosphere="dawn"] {
+    --atm-paper: #F7EFE8;
+    --atm-paper-dim: #ECE2D7;
+    --atm-ink: #2A2018;
+    --atm-ink-dim: #6B5B4D;
+    --atm-ink-faint: #9C8B7B;
+    --atm-accent: #B8553A;
+    --atm-grain-opacity: 0.04;
+    --atm-grain-blend: multiply;
+  }
+  /* Day — current default, warm paper */
+  html[data-atmosphere="day"] {
+    --atm-paper: #FAF7F2;
+    --atm-paper-dim: #EFEAE0;
+    --atm-ink: #1A1A1A;
+    --atm-ink-dim: #5A5750;
+    --atm-ink-faint: #8A857B;
+    --atm-accent: #C4452D;
+    --atm-grain-opacity: 0;
+  }
+  /* Dusk — overcast cool grey, faded brick accent */
+  html[data-atmosphere="dusk"] {
+    --atm-paper: #E8E5DE;
+    --atm-paper-dim: #DCD8D0;
+    --atm-ink: #2C2A28;
+    --atm-ink-dim: #6E6B66;
+    --atm-ink-faint: #9A9690;
+    --atm-accent: #A04230;
+    --atm-grain-opacity: 0.06;
+    --atm-grain-blend: multiply;
+  }
+  /* Midnight — dark mode equivalent, takes over .dark too */
+  html[data-atmosphere="midnight"],
+  html[data-atmosphere="midnight"].dark {
+    --atm-paper: #0E0E0C;
+    --atm-paper-dim: #1A1A18;
+    --atm-ink: #EAE7E0;
+    --atm-ink-dim: #9A958B;
+    --atm-ink-faint: #5C5A53;
+    --atm-accent: #D4A574;
+    --atm-grain-opacity: 0.05;
+    --atm-grain-blend: screen;
+  }
+
+  /* ── TEMPO ────────────────────────────────────────────────── */
+  html[data-tempo="hushed"] {
+    --rhythm-block-y: 1.45;
+    --rhythm-line: 1.85;
+    --rhythm-reveal: 1100ms;
+    --rhythm-stagger: 80ms;
+    --rhythm-rule: 0.08;
+  }
+  html[data-tempo="measured"] {
+    --rhythm-block-y: 1;
+    --rhythm-line: 1.7;
+    --rhythm-reveal: 700ms;
+    --rhythm-stagger: 40ms;
+    --rhythm-rule: 0.12;
+  }
+  html[data-tempo="brisk"] {
+    --rhythm-block-y: 0.7;
+    --rhythm-line: 1.55;
+    --rhythm-reveal: 380ms;
+    --rhythm-stagger: 18ms;
+    --rhythm-rule: 0.18;
+  }
+
+  /* ── APPLY axes to the existing painted layer ────────────── */
+  body { background: var(--atm-paper); color: var(--atm-ink); }
+  .dark body { background: var(--atm-paper); color: var(--atm-ink); }
+
+  /* Atmosphere overrides Tailwind's bg-paper / text-ink etc. via CSS specificity through vars */
+  .bg-paper, .dark\:bg-night { background-color: var(--atm-paper) !important; }
+  .bg-paper\/70, .dark\:bg-night\/70 {
+    background-color: color-mix(in srgb, var(--atm-paper) 70%, transparent) !important;
+  }
+  .bg-paper\/80, .dark\:bg-night\/80 {
+    background-color: color-mix(in srgb, var(--atm-paper) 80%, transparent) !important;
+  }
+  .text-ink, .dark\:text-sand-ink { color: var(--atm-ink) !important; }
+  .text-ink-dim, .dark\:text-sand-dim { color: var(--atm-ink-dim) !important; }
+  .text-ink-faint, .dark\:text-sand-faint { color: var(--atm-ink-faint) !important; }
+  .text-rust, .dark\:text-sand { color: var(--atm-accent) !important; }
+  .bg-rust, .dark\:bg-sand { background-color: var(--atm-accent) !important; }
+  .border-ink\/5, .dark\:border-sand-ink\/5 {
+    border-color: color-mix(in srgb, var(--atm-ink) 8%, transparent) !important;
+  }
+  .border-ink\/10, .dark\:border-sand-ink\/10 {
+    border-color: color-mix(in srgb, var(--atm-ink) 14%, transparent) !important;
+  }
+  .border-ink\/15, .dark\:border-sand-ink\/15 {
+    border-color: color-mix(in srgb, var(--atm-ink) 20%, transparent) !important;
+  }
+  .divide-ink\/10 > * + *, .dark\:divide-sand-ink\/10 > * + * {
+    border-color: color-mix(in srgb, var(--atm-ink) 14%, transparent) !important;
+  }
+  ::selection { background: var(--atm-accent); color: var(--atm-paper); }
+  .dark ::selection { background: var(--atm-accent); color: var(--atm-paper); }
+
+  /* Paper grain — only visible at certain atmospheres */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    pointer-events: none; z-index: 1;
+    opacity: var(--atm-grain-opacity);
+    mix-blend-mode: var(--atm-grain-blend);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    transition: opacity 600ms ease;
+  }
+  main, header, footer, .tweaks { position: relative; z-index: 2; }
+
+  /* Section block padding scales with tempo */
+  #hakkinda, #deneyim, #dusunceler, #iletisim {
+    padding-top: calc(6rem * var(--rhythm-block-y));
+    padding-bottom: calc(6rem * var(--rhythm-block-y));
+  }
+  @media (min-width: 640px) {
+    #hakkinda, #deneyim, #dusunceler, #iletisim {
+      padding-top: calc(9rem * var(--rhythm-block-y));
+      padding-bottom: calc(9rem * var(--rhythm-block-y));
+    }
+  }
+
+  /* Hairline opacity follows tempo */
+  .rule { opacity: var(--rhythm-rule) !important; }
+
+  /* Body prose line-height follows tempo (only the real prose blocks) */
+  #hakkinda .leading-\[1\.7\], #deneyim .leading-\[1\.7\], #dusunceler p.text-\[15px\] {
+    line-height: var(--rhythm-line) !important;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-feature-settings: "ss01", "ss02", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background-color 600ms ease, color 600ms ease;
+  }
+
+  /* Voice-driven display & italic — tied to --voice-* vars */
+  .display {
+    font-family: var(--voice-display-family);
+    font-weight: var(--voice-display-weight);
+    font-variation-settings: var(--voice-display-vsettings);
+    letter-spacing: var(--voice-display-tracking);
+    line-height: var(--voice-display-leading);
+    text-transform: var(--voice-display-transform);
+    transition: letter-spacing 500ms ease, line-height 500ms ease;
+  }
+  .display-italic {
+    font-family: var(--voice-display-family);
+    font-style: var(--voice-italic-style);
+    font-variation-settings: var(--voice-italic-vsettings);
+    letter-spacing: -0.02em;
+  }
+
+  /* Animated left-to-right underline on links */
+  .ulink {
+    position: relative;
+    display: inline-block;
+  }
+  .ulink::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 320ms cubic-bezier(.2,.6,.2,1);
+  }
+  .ulink:hover::after { transform: scaleX(1); }
+
+  /* Persistent underline (used for inline references inside prose) */
+  .ulink-on::after { transform: scaleX(1); }
+  .ulink-on:hover::after { transform: scaleX(0); transform-origin: right center; }
+
+  /* Scroll reveal — duration follows tempo */
+  .reveal {
+    opacity: 0;
+    transform: translateY(8px);
+    transition:
+      opacity var(--rhythm-reveal) cubic-bezier(.2,.6,.2,1),
+      transform var(--rhythm-reveal) cubic-bezier(.2,.6,.2,1);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Tabular numerals for dates */
+  .tabular { font-variant-numeric: tabular-nums; }
+
+  /* Section rule — hairline */
+  .rule {
+    height: 1px;
+    background: currentColor;
+    opacity: 0.12;
+  }
+
+  /* Caret blink for the live status */
+  .caret {
+    display: inline-block;
+    width: 0.5ch;
+    height: 0.95em;
+    background: currentColor;
+    vertical-align: -0.1em;
+    margin-left: 0.25ch;
+    animation: blink 1.1s steps(2, end) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* Project hover thumbnail (kept subtle — only used if an image is present) */
+  .thumb-host { position: relative; }
+  .thumb-host .thumb {
+    position: absolute;
+    pointer-events: none;
+    width: 200px;
+    height: 140px;
+    top: 50%;
+    right: -16px;
+    transform: translate(100%, -50%) scale(.96);
+    opacity: 0;
+    transition: opacity 220ms ease, transform 320ms cubic-bezier(.2,.6,.2,1);
+    background-size: cover;
+    background-position: center;
+    border-radius: 2px;
+  }
+  .thumb-host:hover .thumb {
+    opacity: 1;
+    transform: translate(100%, -50%) scale(1);
+  }
+
+  /* Selection */
+  ::selection { background: #C4452D; color: #FAF7F2; }
+  .dark ::selection { background: #D4A574; color: #0E0E0C; }
+
+  /* Reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .caret { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* Respect users who don't want fancy serif italic loading flash */
+  .display, .display-italic { font-display: swap; }
+</style>
+</head>
+
+<body class="bg-paper text-ink dark:bg-night dark:text-sand-ink font-sans antialiased transition-colors duration-300">
+
+<!-- Top nav: minimal text links, no hamburger -->
+<header class="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-paper/70 dark:bg-night/70 border-b border-ink/5 dark:border-sand-ink/5">
+  <nav class="max-w-[1100px] mx-auto px-6 sm:px-10 lg:px-16 h-14 flex items-center justify-between">
+    <a href="#top" class="font-mono text-[11px] tracking-[0.18em] uppercase text-ink-dim dark:text-sand-dim hover:text-ink dark:hover:text-sand-ink transition-colors">
+      MKB
+    </a>
+    <ul class="flex items-center gap-6 sm:gap-8 font-mono text-[11px] tracking-[0.18em] uppercase">
+      <li><a href="#hakkinda" class="ulink text-ink-dim dark:text-sand-dim hover:text-ink dark:hover:text-sand-ink transition-colors">Hakkında</a></li>
+      <li><a href="#deneyim"  class="ulink text-ink-dim dark:text-sand-dim hover:text-ink dark:hover:text-sand-ink transition-colors">Deneyim</a></li>
+      <li class="hidden sm:list-item"><a href="#dusunceler" class="ulink text-ink-dim dark:text-sand-dim hover:text-ink dark:hover:text-sand-ink transition-colors">Düşünceler</a></li>
+      <li><a href="#iletisim" class="ulink text-ink-dim dark:text-sand-dim hover:text-ink dark:hover:text-sand-ink transition-colors">İletişim</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top" class="pt-14">
+
+  <!-- 1. HERO -->
+  <section class="relative max-w-[1100px] mx-auto px-6 sm:px-10 lg:px-16 pt-24 sm:pt-36 lg:pt-44 pb-28 sm:pb-40">
+    <!-- Top-left meta -->
+    <div class="reveal flex items-start justify-between gap-6 mb-16 sm:mb-24">
+      <div class="font-mono text-[11px] tracking-[0.18em] uppercase text-ink-faint dark:text-sand-faint leading-relaxed">
+        <div>Musa Kerem Boz</div>
+        <div>Sistem Seyyahı</div>
+        <div class="mt-1">Yalova, TR · 40°39′N 29°16′E</div>
+      </div>
+      <div class="font-mono text-[11px] tracking-[0.18em] uppercase text-ink-faint dark:text-sand-faint text-right leading-relaxed">
+        <div>v.2025.04</div>
+        <div>tr / <a href="#" class="ulink hover:text-ink dark:hover:text-sand-ink">en</a></div>
+      </div>
+    </div>
+
+    <!-- Headline -->
+    <h1 class="reveal display text-[clamp(2.6rem,8.5vw,7rem)] max-w-[14ch]">
+      Musa Kerem Boz —<br />
+      <span class="display-italic text-rust dark:text-sand">Sistem Seyyahı.</span>
+    </h1>
+
+    <p class="reveal mt-10 max-w-[42ch] text-lg sm:text-xl leading-relaxed text-ink-dim dark:text-sand-dim text-balance">
+      Yalova'da yaşıyor, her şeyin birbiriyle nasıl bağlandığını anlamaya çalışıyor.
+    </p>
+
+    <!-- Status pill -->
+    <div class="reveal mt-14 flex items-center gap-3 font-mono text-[12px] tracking-[0.04em] text-ink-dim dark:text-sand-dim">
+      <span class="inline-flex items-center gap-2">
+        <span class="relative flex h-1.5 w-1.5">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-rust dark:bg-sand opacity-60"></span>
+          <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-rust dark:bg-sand"></span>
+        </span>
+        <span class="uppercase tracking-[0.18em] text-ink-faint dark:text-sand-faint">şu an →</span>
+      </span>
+      <span class="text-ink dark:text-sand-ink">Gençlik ve Spor Bakanlığı, Destek Personeli</span>
+    </div>
+
+    <!-- Scroll cue -->
+    <a href="#hakkinda" class="reveal absolute bottom-10 right-6 sm:right-10 lg:right-16 font-mono text-[11px] tracking-[0.18em] uppercase text-ink-faint dark:text-sand-faint hover:text-ink dark:hover:text-sand-ink transition-colors group">
+      <span class="block">aşağı</span>
+      <span class="block mt-1 transition-transform duration-300 group-hover:translate-y-1">↓</span>
+    </a>
+  </section>
+
+  <!-- HAIRLINE -->
+  <div class="max-w-[1100px] mx-auto px-6 sm:px-10 lg:px-16">
+    <div class="rule"></div>
+  </div>
+
+  <!-- 2. ABOUT -->
+  <section id="hakkinda" class="max-w-[1100px] mx-auto px-6 sm:px-10 lg:px-16 py-24 sm:py-36">
+    <div class="grid grid-cols-12 gap-x-6 sm:gap-x-10 gap-y-10">
+
+      <!-- Section label -->
+      <div class="col-span-12 md:col-span-3">
+        <div class="reveal sticky top-24 font-mono text-[11px] tracking-[0.22em] uppercase text-ink-faint dark:text-sand-faint">
+          <div class="flex items-baseline gap-3">
+            <span class="tabular">01</span>
+            <span>Hakkında</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="col-span-12 md:col-span-6">
+        <div class="reveal max-w-[60ch] space-y-7 text-[17px] sm:text-[18px] leading-[1.7] text-ink dark:text-sand-ink">
+          <p>
+            Tek bir alana yerleşmek yerine birçok alanın kesişim noktalarında durmayı tercih ediyorum. Buna <em class="display-italic text-rust dark:text-sand not-italic">generalist</em> deniyor; zaman zaman eleştiri gibi söyleniyor, ama ben bunu bir kısıtlama değil, bir hareket serbestisi olarak okuyorum. Her katmanı görmek, sistemleri bütün olarak anlamak — bu benim için bilinçli bir tercih değil, içgüdüsel bir yatkınlık.
+          </p>
+          <p>
+            Yalova'da yaşıyorum. İstanbul'un hemen yanı başında, ama onun gürültüsünden yeterince uzakta. Gençlik ve Spor Bakanlığı'nda çalışıyor, bir kurumun içinde insanların ve süreçlerin nasıl ilerlediğini gözlemliyorum. Teknik olmayan bir ortamda olmak bana aslında en değerli soruyu öğretiyor: bir şey <em class="display-italic">neden</em> yapılıyor?
+          </p>
+          <p>
+            Öğrenmek benim için bir araç değil, zemin. Yeni bir kavram, beklenmedik bir soru ya da hiç adımlamadığım bir alan — bunların her biri içimde bir şeyi devreye sokuyor. Şu an somut bir proje listesi sunacak bir yerde değilim; ama merak etmeye ve denemeye devam ediyorum. Bu site de o sürecin bir parçası.
+          </p>
+        </div>
+      </div>
+
+      <!-- Side meta -->
+      <aside class="col-span-12 md:col-span-3 md:col-start-10">
+        <div class="reveal font-mono text-[11px] tracking-[0.04em] leading-relaxed space-y-5 text-ink-dim dark:text-sand-dim md:pt-2">
+          <div>
+            <div class="uppercase tracking-[0.18em] text-ink-faint dark:text-sand-faint mb-1">Konum</div>
+            <div>Yalova, Türkiye</div>
+          </div>
+          <div>
+            <div class="uppercase tracking-[0.18em] text-ink-faint dark:text-sand-faint mb-1">İlgi alanları</div>
+            <div>Sistem düşüncesi</div>
+            <div>Bilgi yönetimi</div>
+            <div>Web mimarisi</div>
+            <div>Açık kaynak</div>
+          </div>
+          <div>
+            <div class="uppercase tracking-[0.18em] text-ink-faint dark:text-sand-faint mb-1">Şu an okuyor</div>
+            <div>Donella Meadows —<br />Sistem Düşüncesi</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- HAIRLINE -->
+  <div class="max-w-[1100px] mx-auto px-6 sm:px-10 lg:px-16">
+    <div class="rule"></div>
+  </div>
+
+  <!-- 3. EXPERIENCE -->
+  <section id="deneyim" class="max-w-[1100px] mx-auto px-6 sm:px-10 lg:px-16 py-24 sm:py-36">
+    <div class="grid grid-cols-12 gap-x-6 sm:gap-x-10 gap-y-10">
+
+      <div class="col-span-12 md:col-span-3">
+        <div class="reveal sticky top-24 font-mono text-[11px] tracking-[0.22em] uppercase text-ink-faint dark:text-sand-faint">
+          <div class="flex items-baseline gap-3">
+            <span class="tabular">02</span>
+            <span>Deneyim</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-span-12 md:col-span-9">
+        <ol class="space-y-14">
+
+          <li class="reveal grid grid-cols-12 gap-x-6 sm:gap-x-10">
+            <div class="col-span-12 sm:col-span-3 font-mono text-[11px] tabular tracking-[0.04em] text-ink-faint dark:text-sand-faint pt-3">
+              2024 — şimdi
+            </div>
+            <div class="col-span-12 sm:col-span-9">
+              <h3 class="display text-[clamp(1.8rem,3.6vw,2.6rem)]">
+                Gençlik ve Spor Bakanlığı
+              </h3>
+              <div class="mt-2 font-mono text-[12px] tracking-[0.04em] text-ink-dim dark:text-sand-dim">
+                Destek Personeli &nbsp;·&nbsp; Yalova
+              </div>
+              <p class="mt-5 max-w-[58ch] text-[16px] sm:text-[17px] leading-[1.7] text-ink dark:text-sand-ink">
+                Bir kamu kurumunun işleyişini yakından gözlemliyorum. Süreçlerin ve insan dinamiklerinin nasıl işlediğini anlamak, bana teknik bilgiden farklı ama bir o kadar değerli bir perspektif sunuyor.
+              </p>
+            </div>
+          </li>
+
+          <!-- Honest placeholder — no fake jobs -->
+          <li class="reveal grid grid-cols-12 gap-x-6 sm:gap-x-10 opacity-60">
+            <div class="col-span-12 sm:col-span-3 font-mono text-[11px] tabular tracking-[0.04em] text-ink-faint dark:text-sand-faint pt-3">
+              öncesi
+            </div>
+            <div class="col-span-12 sm:col-span-9">
+              <p class="font-mono text-[12px] leading-[1.7] text-ink-dim dark:text-sand-dim max-w-[58ch]">
+                — daha önceki adımlar zaman içinde buraya eklenecek.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- HAIRLINE -->
+  <div class="max-w-[1100px] mx-auto px-6 sm:px-10 lg:px-16">
+    <div class="rule"></div>
+  </div>
+
+  <!-- 4. CURRENTLY THINKING ABOUT (replaces empty Projects) -->
+  <section id="dusunceler" class="max-w-[1100px] mx-auto px-6 sm:px-10 lg:px-16 py-24 sm:py-36">
+    <div class="grid grid-cols-12 gap-x-6 sm:gap-x-10 gap-y-10">
+
+      <div class="col-span-12 md:col-span-3">
+        <div class="reveal sticky top-24 font-mono text-[11px] tracking-[0.22em] uppercase text-ink-faint dark:text-sand-faint">
+          <div class="flex items-baseline gap-3">
+            <span class="tabular">03</span>
+            <span>Şu an üzerinde</span>
+          </div>
+          <div class="ml-8">düşündüklerim</div>
+        </div>
+      </div>
+
+      <div class="col-span-12 md:col-span-9">
+
+        <p class="reveal max-w-[58ch] text-[16px] sm:text-[17px] leading-[1.7] text-ink-dim dark:text-sand-dim mb-12">
+          Henüz paylaşabilecek tamamlanmış bir proje yok. Bu yüzden burada, son zamanlarda zihnimde dönen birkaç soru ve ilgi alanı duruyor. İlk somut çalışmalar tamamlandığında bu bölüm güncellenecek.
+        </p>
+
+        <ul class="divide-y divide-ink/10 dark:divide-sand-ink/10 border-t border-b border-ink/10 dark:border-sand-ink/10">
+
+          <li class="reveal py-6 grid grid-cols-12 gap-x-6 group">
+            <div class="col-span-12 sm:col-span-1 font-mono text-[11px] tabular text-ink-faint dark:text-sand-faint pt-2">
+              i.
+            </div>
+            <div class="col-span-12 sm:col-span-7">
+              <h4 class="display text-[clamp(1.4rem,2.4vw,1.9rem)] leading-tight">
+                Bilgi nasıl yerleşir?
+              </h4>
+              <p class="mt-2 max-w-[52ch] text-[15px] leading-[1.65] text-ink-dim dark:text-sand-dim">
+                Bireyin not aldığı şey ile bir kurumun hatırladığı şey arasındaki mesafe.
+              </p>
+            </div>
+            <div class="col-span-12 sm:col-span-4 font-mono text-[11px] tracking-[0.04em] text-ink-faint dark:text-sand-faint sm:text-right pt-2 mt-3 sm:mt-0">
+              bilgi yönetimi · ikinci beyin
+            </div>
+          </li>
+
+          <li class="reveal py-6 grid grid-cols-12 gap-x-6 group">
+            <div class="col-span-12 sm:col-span-1 font-mono text-[11px] tabular text-ink-faint dark:text-sand-faint pt-2">
+              ii.
+            </div>
+            <div class="col-span-12 sm:col-span-7">
+              <h4 class="display text-[clamp(1.4rem,2.4vw,1.9rem)] leading-tight">
+                Küçük web siteleri, büyük fikirler.
+              </h4>
+              <p class="mt-2 max-w-[52ch] text-[15px] leading-[1.65] text-ink-dim dark:text-sand-dim">
+                Kişisel sitelerin, dijital bir kasaba meydanı kurmadaki sessiz rolü.
+              </p>
+            </div>
+            <div class="col-span-12 sm:col-span-4 font-mono text-[11px] tracking-[0.04em] text-ink-faint dark:text-sand-faint sm:text-right pt-2 mt-3 sm:mt-0">
+              web mimarisi · indieweb
+            </div>
+          </li>
+
+          <li class="reveal py-6 grid grid-cols-12 gap-x-6 group">
+            <div class="col-span-12 sm:col-span-1 font-mono text-[11px] tabular text-ink-faint dark:text-sand-faint pt-2">
+              iii.
+            </div>
+            <div class="col-span-12 sm:col-span-7">
+              <h4 class="display text-[clamp(1.4rem,2.4vw,1.9rem)] leading-tight">
+                Kurumlar neyi unutur?
+              </h4>
+              <p class="mt-2 max-w-[52ch] text-[15px] leading-[1.65] text-ink-dim dark:text-sand-dim">
+                Süreçlerin yazılı olmayan kısmı, yani çoğu kısmı.
+              </p>
+            </div>
+            <div class="col-span-12 sm:col-span-4 font-mono text-[11px] tracking-[0.04em] text-ink-faint dark:text-sand-faint sm:text-right pt-2 mt-3 sm:mt-0">
+              sistem düşüncesi
+            </div>
+          </li>
+
+          <li class="reveal py-6 grid grid-cols-12 gap-x-6 group">
+            <div class="col-span-12 sm:col-span-1 font-mono text-[11px] tabular text-ink-faint dark:text-sand-faint pt-2">
+              iv.
+            </div>
+            <div class="col-span-12 sm:col-span-7">
+              <h4 class="display text-[clamp(1.4rem,2.4vw,1.9rem)] leading-tight">
+                Açık kaynak bir alışkanlıktır.
+              </h4>
+              <p class="mt-2 max-w-[52ch] text-[15px] leading-[1.65] text-ink-dim dark:text-sand-dim">
+                Bir lisanstan önce, paylaşmaya yatkın bir tutum.
+              </p>
+            </div>
+            <div class="col-span-12 sm:col-span-4 font-mono text-[11px] tracking-[0.04em] text-ink-faint dark:text-sand-faint sm:text-right pt-2 mt-3 sm:mt-0">
+              açık kaynak · kültür
+            </div>
+          </li>
+        </ul>
+
+        <p class="reveal mt-10 font-mono text-[11px] tracking-[0.04em] text-ink-faint dark:text-sand-faint">
+          — devam ediyor.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HAIRLINE -->
+  <div class="max-w-[1100px] mx-auto px-6 sm:px-10 lg:px-16">
+    <div class="rule"></div>
+  </div>
+
+  <!-- 5. CONTACT -->
+  <section id="iletisim" class="max-w-[1100px] mx-auto px-6 sm:px-10 lg:px-16 py-24 sm:py-36">
+    <div class="grid grid-cols-12 gap-x-6 sm:gap-x-10 gap-y-10">
+
+      <div class="col-span-12 md:col-span-3">
+        <div class="reveal font-mono text-[11px] tracking-[0.22em] uppercase text-ink-faint dark:text-sand-faint">
+          <div class="flex items-baseline gap-3">
+            <span class="tabular">04</span>
+            <span>İletişim</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-span-12 md:col-span-9">
+        <h2 class="reveal display text-[clamp(2rem,5.5vw,4.4rem)] max-w-[16ch]">
+          Bir e-posta yeter.
+          <span class="display-italic text-rust dark:text-sand">Yazışalım.</span>
+        </h2>
+
+        <div class="reveal mt-10 flex flex-col sm:flex-row sm:items-end gap-8 sm:gap-16">
+          <a href="/cdn-cgi/l/email-protection#b9cdd1dcf9d4cccad8d2dccbdcd4dbd6c397d4dc" class="ulink display text-[clamp(1.6rem,3.2vw,2.4rem)] text-ink dark:text-sand-ink">
+            <span class="__cf_email__" data-cfemail="42362a27022f373123292730272f202d386c2f27">[email&#160;protected]</span>
+          </a>
+        </div>
+
+        <div class="reveal mt-12 flex flex-wrap gap-x-8 gap-y-3 font-mono text-[11px] tracking-[0.18em] uppercase text-ink-dim dark:text-sand-dim">
+          <a href="#" class="ulink hover:text-ink dark:hover:text-sand-ink">LinkedIn <span aria-hidden="true">↗</span></a>
+          <a href="#" class="ulink hover:text-ink dark:hover:text-sand-ink">GitHub <span aria-hidden="true">↗</span></a>
+          <a href="#" class="ulink hover:text-ink dark:hover:text-sand-ink">X / Twitter <span aria-hidden="true">↗</span></a>
+          <span class="text-ink-faint dark:text-sand-faint normal-case tracking-[0.04em]">— sosyal hesaplar yayına alınma sırasında eklenecek.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="max-w-[1100px] mx-auto px-6 sm:px-10 lg:px-16 pb-16 pt-8">
+  <div class="rule mb-10"></div>
+
+  <div class="grid grid-cols-12 gap-x-6 gap-y-8 font-mono text-[11px] tracking-[0.04em] text-ink-faint dark:text-sand-faint">
+    <div class="col-span-12 sm:col-span-4">
+      <p class="display-italic not-italic text-ink-dim dark:text-sand-dim text-[14px] leading-snug max-w-[28ch]">
+        “Bilmek, merak etmekten doğar.”
+      </p>
+    </div>
+
+    <div class="col-span-6 sm:col-span-4 sm:text-center">
+      <div class="uppercase tracking-[0.22em]">Son güncelleme</div>
+      <div class="mt-1 text-ink-dim dark:text-sand-dim tabular">Nisan 2025</div>
+    </div>
+
+    <div class="col-span-6 sm:col-span-4 sm:text-right">
+      <div class="uppercase tracking-[0.22em]">© 2025</div>
+      <div class="mt-1 text-ink-dim dark:text-sand-dim">Musa Kerem Boz</div>
+    </div>
+  </div>
+</footer>
+
+<!-- DARK MODE TOGGLE -->
+<button id="theme-toggle"
+        aria-label="Tema değiştir"
+        class="fixed bottom-6 right-6 z-50 h-10 w-10 grid place-items-center rounded-full border border-ink/15 dark:border-sand-ink/15 bg-paper/80 dark:bg-night/80 backdrop-blur text-ink-dim dark:text-sand-dim hover:text-ink dark:hover:text-sand-ink transition-colors">
+  <span id="theme-glyph" class="font-mono text-[14px] leading-none">●</span>
+</button>
+
+<!-- ───────────────────────────── TWEAKS PANEL ───────────────────────────── -->
+<style>
+  .tweaks {
+    position: fixed;
+    top: 80px;
+    right: 24px;
+    width: 280px;
+    background: color-mix(in srgb, var(--atm-paper) 92%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid color-mix(in srgb, var(--atm-ink) 14%, transparent);
+    color: var(--atm-ink);
+    z-index: 60;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    transform: translateX(calc(100% + 32px));
+    transition: transform 360ms cubic-bezier(.2,.6,.2,1);
+    box-shadow: 0 12px 40px -12px color-mix(in srgb, var(--atm-ink) 18%, transparent);
+  }
+  .tweaks.open { transform: translateX(0); }
+  @media (max-width: 640px) {
+    .tweaks { right: 12px; left: 12px; width: auto; top: 72px; }
+  }
+
+  .tweaks__head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid color-mix(in srgb, var(--atm-ink) 10%, transparent);
+  }
+  .tweaks__title {
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--atm-ink-faint);
+  }
+  .tweaks__close {
+    background: transparent; border: 0; color: var(--atm-ink-dim);
+    cursor: pointer; font: inherit; padding: 2px 4px;
+  }
+  .tweaks__close:hover { color: var(--atm-ink); }
+
+  .tweaks__body { padding: 6px 16px 16px; }
+
+  .tweak-axis { padding: 14px 0; border-top: 1px dashed color-mix(in srgb, var(--atm-ink) 12%, transparent); }
+  .tweak-axis:first-child { border-top: 0; }
+  .tweak-axis__label {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--atm-ink-faint);
+    margin-bottom: 10px;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .tweak-axis__label .val { color: var(--atm-ink); letter-spacing: 0.04em; text-transform: none; }
+
+  .tweak-options {
+    display: flex; gap: 1px;
+    background: color-mix(in srgb, var(--atm-ink) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--atm-ink) 10%, transparent);
+  }
+  .tweak-options button {
+    flex: 1;
+    background: var(--atm-paper);
+    color: var(--atm-ink-dim);
+    border: 0;
+    padding: 7px 4px;
+    font: inherit;
+    cursor: pointer;
+    text-transform: lowercase;
+    letter-spacing: 0.04em;
+    transition: background 200ms ease, color 200ms ease;
+  }
+  .tweak-options button:hover { color: var(--atm-ink); }
+  .tweak-options button[aria-selected="true"] {
+    background: var(--atm-ink);
+    color: var(--atm-paper);
+  }
+
+  /* Atmosphere — show swatch dots */
+  .tweak-atm { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .tweak-atm button {
+    background: transparent;
+    border: 1px solid color-mix(in srgb, var(--atm-ink) 12%, transparent);
+    cursor: pointer;
+    padding: 8px 4px 6px;
+    font: inherit;
+    color: var(--atm-ink-dim);
+    text-transform: lowercase;
+    letter-spacing: 0.04em;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    transition: border-color 200ms ease, color 200ms ease, transform 200ms ease;
+  }
+  .tweak-atm button:hover { color: var(--atm-ink); transform: translateY(-1px); }
+  .tweak-atm button[aria-selected="true"] {
+    border-color: var(--atm-ink);
+    color: var(--atm-ink);
+  }
+  .tweak-atm .swatches {
+    display: flex; gap: 2px;
+  }
+  .tweak-atm .swatches i {
+    width: 10px; height: 10px; display: block; border-radius: 50%;
+    border: 1px solid color-mix(in srgb, #000 18%, transparent);
+  }
+
+  /* Tweaks toggle button (replaces nothing — adds beside theme toggle) */
+  .tweaks-fab {
+    position: fixed;
+    bottom: 6px; right: 6px;
+    z-index: 51;
+    /* sit just above the existing theme button */
+    transform: translateY(-56px);
+    width: 40px; height: 40px;
+    display: grid; place-items: center;
+    background: color-mix(in srgb, var(--atm-paper) 80%, transparent);
+    backdrop-filter: blur(8px);
+    border: 1px solid color-mix(in srgb, var(--atm-ink) 15%, transparent);
+    border-radius: 9999px;
+    color: var(--atm-ink-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    cursor: pointer;
+    transition: color 200ms ease, transform 200ms ease;
+  }
+  .tweaks-fab:hover { color: var(--atm-ink); }
+</style>
+
+<button class="tweaks-fab" id="tweaks-fab" aria-label="Tweaks aç">⌘</button>
+
+<aside class="tweaks" id="tweaks" aria-label="Tweaks paneli">
+  <div class="tweaks__head">
+    <div class="tweaks__title">Tweaks</div>
+    <button class="tweaks__close" id="tweaks-close" aria-label="Kapat">×</button>
+  </div>
+  <div class="tweaks__body">
+
+    <div class="tweak-axis">
+      <div class="tweak-axis__label">
+        <span>Voice</span><span class="val" data-val="voice"></span>
+      </div>
+      <div class="tweak-options" data-axis="voice" role="tablist">
+        <button data-value="editorial" role="tab">editorial</button>
+        <button data-value="field" role="tab">field</button>
+        <button data-value="manifesto" role="tab">manifesto</button>
+      </div>
+    </div>
+
+    <div class="tweak-axis">
+      <div class="tweak-axis__label">
+        <span>Atmosphere</span><span class="val" data-val="atmosphere"></span>
+      </div>
+      <div class="tweak-atm" data-axis="atmosphere" role="tablist">
+        <button data-value="dawn" role="tab" data-paper="#F7EFE8" data-ink="#2A2018" data-accent="#B8553A">
+          <span class="swatches"><i style="background:#F7EFE8"></i><i style="background:#B8553A"></i></span>
+          dawn
+        </button>
+        <button data-value="day" role="tab" data-paper="#FAF7F2" data-ink="#1A1A1A" data-accent="#C4452D">
+          <span class="swatches"><i style="background:#FAF7F2"></i><i style="background:#C4452D"></i></span>
+          day
+        </button>
+        <button data-value="dusk" role="tab" data-paper="#E8E5DE" data-ink="#2C2A28" data-accent="#A04230">
+          <span class="swatches"><i style="background:#E8E5DE"></i><i style="background:#A04230"></i></span>
+          dusk
+        </button>
+        <button data-value="midnight" role="tab" data-paper="#0E0E0C" data-ink="#EAE7E0" data-accent="#D4A574">
+          <span class="swatches"><i style="background:#0E0E0C"></i><i style="background:#D4A574"></i></span>
+          midnight
+        </button>
+      </div>
+    </div>
+
+    <div class="tweak-axis">
+      <div class="tweak-axis__label">
+        <span>Tempo</span><span class="val" data-val="tempo"></span>
+      </div>
+      <div class="tweak-options" data-axis="tempo" role="tablist">
+        <button data-value="hushed" role="tab">hushed</button>
+        <button data-value="measured" role="tab">measured</button>
+        <button data-value="brisk" role="tab">brisk</button>
+      </div>
+    </div>
+
+  </div>
+</aside>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ───────────────────────────── TWEAKS ─────────────────────────────
+  (function () {
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "voice": "editorial",
+      "atmosphere": "midnight",
+      "tempo": "brisk"
+    }/*EDITMODE-END*/;
+
+    const root = document.documentElement;
+    const panel = document.getElementById('tweaks');
+    const fab = document.getElementById('tweaks-fab');
+    const closeBtn = document.getElementById('tweaks-close');
+    const valLabels = panel.querySelectorAll('[data-val]');
+
+    const stored = (() => {
+      try { return JSON.parse(localStorage.getItem('mkb-tweaks') || '{}'); }
+      catch (_) { return {}; }
+    })();
+    const state = Object.assign({}, TWEAK_DEFAULTS, stored);
+
+    function apply() {
+      root.dataset.voice = state.voice;
+      root.dataset.atmosphere = state.atmosphere;
+      root.dataset.tempo = state.tempo;
+      root.classList.toggle('dark', state.atmosphere === 'midnight');
+
+      panel.querySelectorAll('[data-axis]').forEach(group => {
+        const axis = group.dataset.axis;
+        group.querySelectorAll('button').forEach(btn => {
+          btn.setAttribute('aria-selected', btn.dataset.value === state[axis] ? 'true' : 'false');
+        });
+      });
+      valLabels.forEach(el => { el.textContent = state[el.dataset.val]; });
+
+      try {
+        window.parent.postMessage({ type: '__edit_mode_set_keys', edits: state }, '*');
+      } catch (_) {}
+      localStorage.setItem('mkb-tweaks', JSON.stringify(state));
+    }
+
+    panel.querySelectorAll('[data-axis]').forEach(group => {
+      const axis = group.dataset.axis;
+      group.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-value]');
+        if (!btn) return;
+        state[axis] = btn.dataset.value;
+        apply();
+      });
+    });
+
+    function open() { panel.classList.add('open'); }
+    function close() {
+      panel.classList.remove('open');
+      try { window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*'); } catch (_) {}
+    }
+    fab.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+
+    window.addEventListener('message', (e) => {
+      const t = e.data && e.data.type;
+      if (t === '__activate_edit_mode') open();
+      else if (t === '__deactivate_edit_mode') close();
+    });
+    try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch (_) {}
+
+    apply();
+  })();
+</script>
+
+<script>
+  // Dark mode — restore from storage / system pref
+  (function () {
+    const root = document.documentElement;
+    const stored = localStorage.getItem('mkb-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = stored ? stored === 'dark' : prefersDark;
+    if (isDark) root.classList.add('dark');
+
+    const btn = document.getElementById('theme-toggle');
+    const glyph = document.getElementById('theme-glyph');
+    function paint() {
+      glyph.textContent = root.classList.contains('dark') ? '○' : '●';
+    }
+    paint();
+    btn.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.setItem('mkb-theme', root.classList.contains('dark') ? 'dark' : 'light');
+      paint();
+    });
+  })();
+
+  // Scroll reveal
+  (function () {
+    const els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(el => el.classList.add('in'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          // tiny stagger when multiple enter together
+          setTimeout(() => e.target.classList.add('in'), Math.min(i * 40, 160));
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(el => io.observe(el));
+  })();
+</script>
+
+</body>
+</html>
